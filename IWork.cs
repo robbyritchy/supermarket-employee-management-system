@@ -2,5 +2,8 @@
 
 public interface IWork
 {
+    void GetJobDescription();
+    void GetTaskList();
+
     
 }
