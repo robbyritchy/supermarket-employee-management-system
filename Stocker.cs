@@ -1,7 +1,5 @@
 namespace Final_Project;
 
-namespace Final_Project;
-
 public class Stocker : Employee
 {
     public decimal HourlyPay { get; set; }
