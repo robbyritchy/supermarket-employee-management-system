@@ -13,12 +13,23 @@ public class Manager : IManageEmployees, IWork
     //IManageEmployees methods
     public void HireEmployee(Employee employee){}
     public void FireEmployee(int employeeId){}
-    public void PayEmployee(int employeeId){}
     public void EditEmployee(int employeeId, string newName, decimal? newSalaryOrHourly = null){}
 
     //*** Placeholder value for now, make sure to fix later ***
+    public void PayEmployee(int employeeId, IPaycheck method)
+    {
+        throw new NotImplementedException();
+    }
+
     public decimal GetEmployeePay(int employeeId, IPaycheck method)
     {
-        return 0;
+        throw new NotImplementedException();
     }
+
+    public string GetJobDescriptionFor(int employeeId)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetTaskListFor(int employeeId){}
 }
