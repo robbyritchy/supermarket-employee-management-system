@@ -1,10 +1,16 @@
 namespace Final_Project;
 
-public class Manager : IManageEmployees, IWork
+public class Manager : Employee, IManageEmployees, IWork
 {
     public string Name { get; set; }
     public int ID { get; set; }
     public decimal Salary { get; set; }
+
+    public Manager(string name, int id, decimal salary)
+        : base(name, id)
+    {
+        Salary = salary;
+    }
 
     //IWork methods
     public void GetJobDescription(){}
