@@ -14,6 +14,7 @@ public class PayByCash : IPaycheck
             var hours = HourLogger.GetInstance().GetTotalHours(employee.Id);
             return cashier.HourlyPay * (decimal)hours;
         }
+        throw new InvalidOperationException("Unknown employee type");
     }
 
     public void Pay(Employee employee)
