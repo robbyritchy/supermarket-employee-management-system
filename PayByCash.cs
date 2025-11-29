@@ -4,22 +4,12 @@ public class PayByCash : IPaycheck
 {
     public decimal CalculatePay(Employee employee)
     {
-        if (employee is Manager manager)
-        {
-            return manager.Salary;
-        }
-
-        if (employee is Cashier cashier)
-        {
-            var hours = HourLogger.GetInstance().GetTotalHours(employee.Id);
-            return cashier.HourlyPay * (decimal)hours;
-        }
-        throw new InvalidOperationException("Unknown employee type");
+        return employee.CalculatePay();
     }
 
     public void Pay(Employee employee)
     {
-        var amt = CalculatePay(employee);
-        Console.WriteLine($"Paying cash to {employee.Name} (ID {employee.Id}): {amt:C}");
+        var amount = CalculatePay(employee);
+        Console.WriteLine($"Paying cash to {employee.Name}: {amount:C}");
     }
 }

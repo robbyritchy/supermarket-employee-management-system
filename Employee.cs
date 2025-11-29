@@ -10,4 +10,7 @@ public abstract class Employee
         Name = name;
         Id = id;
     }
+    
+    //Include pay strategy for each subclass
+    public abstract decimal CalculatePay();
 }

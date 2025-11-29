@@ -4,14 +4,12 @@ public class PayByDirectDeposit : IPaycheck
 {
     public decimal CalculatePay(Employee employee)
     {
-        if (employee is Manager) return employee.Salary;
-        var hours = HourLogger.GetInstance().GetTotalHours(employee.ID);
-        return employee.HourlyPay * (decimal)hours;
+        return employee.CalculatePay();
     }
 
     public void Pay(Employee employee)
     {
         var amt = CalculatePay(employee);
-        Console.WriteLine($"Direct deposit to {employee.Name} (ID {employee.ID}): {amt:C}");
+        Console.WriteLine($"Depositing {amt:C} into account for {employee.Name}");
     }
 }

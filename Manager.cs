@@ -11,6 +11,12 @@ public class Manager : Employee, IManageEmployees, IWork
     {
         Salary = salary;
     }
+    
+    //Employee Superclass method
+    public override decimal CalculatePay()
+    {
+        return Salary;
+    }
 
     //IWork methods
     public void GetJobDescription(){}
