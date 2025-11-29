@@ -1,24 +1,28 @@
-namespace Final_Project
+namespace Final_Project;
 using System;
 
 public class PayByCheck : IPaycheck
 {
     public decimal CalculatePay(Employee employee)
     {
-        if (employee is Manager)
+        if (employee is Manager manager)
         {
-            return employee.Salary;
+            return manager.Salary;
+        }
+        else if (employee is Cashier cashier)
+        {
+            var hours = HourLogger.GetInstance().GetTotalHours(employee.ID);
+            return cashier.HourlyPay * (decimal)hours;
         }
         else
         {
-            var hours = HourLogger.GetInstance().GetTotalHours(employee.ID);
-            return employee.HourlyPay * (decimal)hours;
+            throw new InvalidOperationException("Unknown employee type");
         }
     }
 
     public void Pay(Employee employee)
     {
         var amount = CalculatePay(employee);
-        Console.WriteLine($"Issuing check to {employee.Name} (ID {employee.ID}): {amount:C}");
+        Console.WriteLine($"Issuing check to {employee.Name} (ID {employee.Id}): {amount:C}");
     }
 }
