@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Supermarket
 {
     public Dictionary<int, Employee> Employees { get; } = new();
+    public int employeeIds = 1;
 
     public void ShowEmployeeList()
     {
@@ -20,5 +21,10 @@ public class Supermarket
             var role = e.GetType().Name;
             System.Console.WriteLine($"  ID: {e.Id} | Name: {e.Name} | Role: {role} | {e.GetPayInfo()}");
         }
+    }
+    //Helper function to increment ids for employees
+    public int GenerateId()
+    {
+        return employeeIds++;
     }
 }
