@@ -4,11 +4,24 @@ public abstract class Employee
 {
     public string Name { get; set; }
     public int Id { get; private set; }
+    
+    public IHourLogger HourLogger { get; }
 
-    protected Employee(string name, int id)
+    protected Employee(string name, int id, IHourLogger logger)
     {
         Name = name;
         Id = id;
+        HourLogger = logger;
+    }
+    //Methods for logging hours
+    public void LogHours(double hours)
+    {
+        HourLogger.AddHours(Id, new WorkLogEntry(DateTime.Now, hours));
+    }
+
+    public double GetHoursWorked()
+    {
+        return HourLogger.GetTotalHours(Id);
     }
     
     //Include overridable pay strategy for each subclass

@@ -4,6 +4,7 @@ public class EmployeeFactory
 {
     public static Employee CreateEmployee(JobType type, string name, int id, decimal? startingPay = null)
     {
+        var logger = HourLogger.GetInstance();
         if (type == JobType.Manager)
         {
             decimal pay;
@@ -16,7 +17,7 @@ public class EmployeeFactory
                 pay = 4000;
             }
 
-            return new Manager(name, id, pay, new Dictionary<int, Employee>());
+            return new Manager(name, id, pay, new Dictionary<int, Employee>(), logger);
         }
         else if (type == JobType.Cashier)
         {
@@ -29,7 +30,7 @@ public class EmployeeFactory
             {
                 pay = 15;
             }
-            return new Cashier(name, id, pay);
+            return new Cashier(name, id, pay, logger);
         }
         else if (type == JobType.Stocker)
         {
@@ -42,7 +43,7 @@ public class EmployeeFactory
             {
                 pay = 15;
             }
-            return new Stocker(name, id, pay);
+            return new Stocker(name, id, pay, logger);
         }
         else
         {

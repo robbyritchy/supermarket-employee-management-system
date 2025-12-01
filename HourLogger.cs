@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 namespace Final_Project;
 
-public class HourLogger
+public class HourLogger : IHourLogger
 {
     private static HourLogger _instance;
     private readonly Dictionary<int, List<WorkLogEntry>> _logs = new();

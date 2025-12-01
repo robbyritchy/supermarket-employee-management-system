@@ -4,8 +4,8 @@ public class Stocker : Employee
 {
     public decimal HourlyPay { get; set; }
 
-    public Stocker(string name, int id, decimal hourlyPay)
-        : base(name, id)
+    public Stocker(string name, int id, decimal hourlyPay, IHourLogger logger)
+        : base(name, id, logger)
     {
         HourlyPay = hourlyPay;
     }
@@ -14,8 +14,7 @@ public class Stocker : Employee
 
     public override decimal CalculatePay()
     {
-        var hours = HourLogger.GetInstance().GetTotalHours(Id);
-        return HourlyPay * (decimal)hours;
+        return HourlyPay * (decimal)GetHoursWorked();
     }
 
     public override string GetPayInfo()
