@@ -27,6 +27,11 @@ public class Manager : Employee, IManageEmployees, IWork
     public void FireEmployee(int employeeId){}
     public void EditEmployee(int employeeId, string newName, decimal? newSalaryOrHourly = null){}
 
+    public override string GetPayInfo()
+    {
+        return ($"Salary: {Salary:C}");
+    }
+
     //*** Placeholder value for now, make sure to fix later ***
     public void PayEmployee(int employeeId, IPaycheck method)
     {

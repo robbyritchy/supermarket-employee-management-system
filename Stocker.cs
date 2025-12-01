@@ -17,4 +17,9 @@ public class Stocker : Employee
         var hours = HourLogger.GetInstance().GetTotalHours(Id);
         return HourlyPay * (decimal)hours;
     }
+
+    public override string GetPayInfo()
+    {
+        return ($"Hourly: {HourlyPay:C}");
+    }
 }

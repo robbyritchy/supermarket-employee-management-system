@@ -11,6 +11,8 @@ public abstract class Employee
         Id = id;
     }
     
-    //Include pay strategy for each subclass
+    //Include overridable pay strategy for each subclass
     public abstract decimal CalculatePay();
+    //Include overridable method to type of pay
+    public abstract string GetPayInfo();
 }

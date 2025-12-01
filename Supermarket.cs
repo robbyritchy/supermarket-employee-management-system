@@ -18,7 +18,7 @@ public class Supermarket
         {
             var e = kv.Value;
             var role = e.GetType().Name;
-            System.Console.WriteLine($"  ID: {e.ID} | Name: {e.Name} | Role: {role} | Salary: {e.Salary:C} | Hourly: {e.HourlyPay:C}");
+            System.Console.WriteLine($"  ID: {e.Id} | Name: {e.Name} | Role: {role} | {e.GetPayInfo()}");
         }
     }
 }
