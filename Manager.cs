@@ -93,25 +93,36 @@ public class Manager : Employee, IManageEmployees, IWork
         //Change employee job type if requested
         if (newType != null && employee.GetType() != targetType)
         {
-            Employee newEmployee = null;
+            decimal startingPay;
+            if (employee is Manager && (newType == JobType.Cashier || newType == JobType.Stocker))
+            {
+                startingPay = 15;
+            }
+            else if ((employee is Cashier || employee is Stocker) && newType == JobType.Manager)
+            {
+                startingPay = 4000;
+            }
+            else
+            {
+                if (employee is Manager manager)
+                {
+                    startingPay = manager.Salary;
+                }
+                else if (employee is Cashier cashier)
+                {
+                    startingPay = cashier.HourlyPay;
+                }
+                else
+                {
+                    startingPay = ((Stocker)employee).HourlyPay;
+                }
+                
+                //Use factory method
+                Employee newEmployee = EmployeeFactory.CreateEmployee(newType.Value, employee.Name, employee.Id, startingPay);
 
-            if (newType == JobType.Manager)
-            {
-                decimal startingPay = 4000;
-                newEmployee = new Manager(employee.Name, employee.Id, startingPay, _employees);
+                _employees[employeeId] = newEmployee;
+                Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) is now a {newType} with pay {startingPay:C}");
             }
-            else if (newType == JobType.Cashier)
-            {
-                decimal startingPay = 15;
-                newEmployee = new Cashier(employee.Name, employee.Id, startingPay);
-            }
-            else if (newType == JobType.Stocker)
-            {
-                decimal startingPay = 15;
-                newEmployee = new Cashier(employee.Name, employee.Id, startingPay);
-            }
-            _employees[employee.Id] = newEmployee;
-            Console.WriteLine($"Employee {employee.Name}  (ID: {employee.Id}) is not a {newType} with starting pay.");
         }
         else if (newName != null | newPay != null)
         {
