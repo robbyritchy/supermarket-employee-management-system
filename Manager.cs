@@ -42,7 +42,9 @@ public class Manager : Employee, IManageEmployees, IWork
     }
 
     public void FireEmployee(int employeeId)
-    {
+    { 
+        
+
         if (_employees.TryGetValue(employeeId, out var employee))
         {
             Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) has been fired");
