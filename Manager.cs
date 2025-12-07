@@ -10,6 +10,7 @@ public class Manager : Employee, IManageEmployees, IWork
     {
         Salary = salary;
         _employees = employees;
+        JobDescription = "Oversees employees, manages payment for employees, and controls employee statuses.";
     }
     
     //Employee Superclass method

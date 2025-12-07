@@ -8,6 +8,7 @@ public class Cashier : Employee
         : base(name, id, logger)
     {
         HourlyPay = hourlyPay;
+        JobDescription = "Handles checkout and assists customers.";
     }
     public void GetJobDescription(){}
     public void GetTaskList(){}

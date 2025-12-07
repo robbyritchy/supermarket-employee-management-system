@@ -8,6 +8,7 @@ public class Stocker : Employee
         : base(name, id, logger)
     {
         HourlyPay = hourlyPay;
+        JobDescription = "Restocks shelves and manages inventory.";
     }
     public void GetJobDescription(){}
     public void GetTaskList(){}
