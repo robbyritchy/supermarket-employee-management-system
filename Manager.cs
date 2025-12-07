@@ -148,7 +148,6 @@ public class Manager : Employee, IManageEmployees, IWork
     }
     
 
-    //*** Placeholder value for now, make sure to fix later ***
     public void PayEmployee(int employeeId, Paycheck method)
     {
         if (!_employees.TryGetValue(employeeId, out var employee))
@@ -156,18 +155,38 @@ public class Manager : Employee, IManageEmployees, IWork
             Console.WriteLine("Employee not found");
             return;
         }
-        method.Pay(employee);
+
+        var paymentMethod = method ?? employee.PaymentMethod;
+        paymentMethod.Pay(employee);
     }
 
     public decimal GetEmployeePay(int employeeId, Paycheck method)
     {
-        throw new NotImplementedException();
+        if (!_employees.TryGetValue(employeeId, out var employee))
+        {
+            throw new Exception("Employee not found");
+        }
+        var paymentMethod = method ?? employee.PaymentMethod;
+        return paymentMethod.CalculatePay(employee);
     }
 
     public string GetJobDescriptionFor(int employeeId)
     {
-        throw new NotImplementedException();
+        if (!_employees.TryGetValue(employeeId, out var employee))
+        {
+            return "Employee not found";
+        }
+
+        return employee.JobDescription;
     }
 
-    public void GetTaskListFor(int employeeId){}
+    public void GetTaskListFor(int employeeId)
+    {
+        if (!_employees.TryGetValue(employeeId, out var employee))
+        {
+            Console.WriteLine("Employee not found");
+            return;
+        }
+        Console.WriteLine(employee.TaskList);
+    }
 }
