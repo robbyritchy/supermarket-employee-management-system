@@ -106,23 +106,23 @@ class Program
                         break;
 
                     case "2":
-                        HireEmployee(supermarket);
+                        HireEmployeeMenu(supermarket);
                         break;
 
                     case "3":
-                        EditEmployee(supermarket);
+                        EditEmployeeMenu(supermarket);
                         break;
 
                     case "4":
-                        FireEmployee();
+                        FireEmployeeMenu();
                         break;
 
                     case "5":
-                        LogEmployeeHours();
+                        LogEmployeeHoursMenu();
                         break;
 
                     case "6":
-                        ViewEmployeeHours();
+                        ViewEmployeeHoursMenu();
                         break;
                     case "7":
                         GetJobDescriptionMenu(owner);
@@ -185,7 +185,7 @@ class Program
     //Methods for employee control
     
     //Hire Employee method
-    static void HireEmployee(Supermarket supermarket)
+    static void HireEmployeeMenu(Supermarket supermarket)
     {
         Console.WriteLine("Enter employee name: ");
         string name = Console.ReadLine();
@@ -221,7 +221,7 @@ class Program
     }
     
     //Edit Employee method
-    static void EditEmployee(Supermarket supermarket)
+    static void EditEmployeeMenu(Supermarket supermarket)
     {
         Console.WriteLine("Enter employee ID to edit: ");
 
@@ -248,7 +248,7 @@ class Program
     }
     
     //Fire Employee method
-    static void FireEmployee()
+    static void FireEmployeeMenu()
     {
         Console.WriteLine("Enter employee ID to fire: ");
         if (!int.TryParse(Console.ReadLine(), out int id))
@@ -259,12 +259,17 @@ class Program
     }
     
     //Log employee hours
-    static void LogEmployeeHours()
+    static void LogEmployeeHoursMenu()
     {
         //Check if employee id exists
         Console.WriteLine("Enter employee ID: ");
         if (!int.TryParse(Console.ReadLine(), out int id))
         {
+            return;
+        }
+        if (!supermarket.Employees.ContainsKey(id))
+        {
+            Console.WriteLine("Employee ID not found.");
             return;
         }
         
@@ -279,11 +284,16 @@ class Program
         Console.WriteLine("Hours logged.");
     }
 
-    static void ViewEmployeeHours()
+    static void ViewEmployeeHoursMenu()
     {
         Console.WriteLine("Enter employee ID: ");
         if (!int.TryParse(Console.ReadLine(), out int id))
         {
+            return;
+        }
+        if (!supermarket.Employees.ContainsKey(id))
+        {
+            Console.WriteLine("Employee ID not found.");
             return;
         }
         logger.DisplayHours(id);
