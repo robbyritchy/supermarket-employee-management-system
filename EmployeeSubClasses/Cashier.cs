@@ -11,8 +11,16 @@ public class Cashier : Employee
         JobDescription = "Handles checkout and assists customers.";
         TaskList = "Refill cash in register.";
     }
-    public void GetJobDescription(){}
-    public void GetTaskList(){}
+
+    public void GetJobDescription()
+    {
+        Console.WriteLine(JobDescription);
+    }
+
+    public void GetTaskList()
+    {
+        Console.WriteLine(TaskList);
+    }
     public override decimal CalculatePay()
     {
         return HourlyPay * (decimal)GetHoursWorked();

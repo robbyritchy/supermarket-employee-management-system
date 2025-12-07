@@ -11,8 +11,16 @@ public class Stocker : Employee
         JobDescription = "Restocks shelves and manages inventory.";
         TaskList = "Count current inventory.";
     }
-    public void GetJobDescription(){}
-    public void GetTaskList(){}
+
+    public void GetJobDescription()
+    {
+        Console.WriteLine(JobDescription);
+    }
+
+    public void GetTaskList()
+    {
+        Console.WriteLine(TaskList);
+    }
 
     public override decimal CalculatePay()
     {

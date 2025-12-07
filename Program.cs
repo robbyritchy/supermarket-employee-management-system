@@ -21,9 +21,11 @@ class Program
             Console.WriteLine("1. Show Employees");
             Console.WriteLine("2. Hire Employee");
             Console.WriteLine("3. Edit Employee");
-            Console.WriteLine("4. Fire employee");
+            Console.WriteLine("4. Fire Employee");
             Console.WriteLine("5. Log Hours");
             Console.WriteLine("6. View Hours for employee");
+            Console.WriteLine("7. View Job Description");
+            Console.WriteLine("8. View Task List");
             Console.WriteLine("0. Exit");
             Console.Write("\nChoose an option: ");
             
@@ -48,6 +50,12 @@ class Program
                     break;
                 case "6":
                     ViewEmployeeHours();
+                    break;
+                case "7":
+                    owner.GetJobDescription();
+                    break;
+                case "8":
+                    owner.GetTaskList();
                     break;
                 case "0":
                     return;

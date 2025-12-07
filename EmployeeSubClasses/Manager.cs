@@ -25,8 +25,15 @@ public class Manager : Employee, IManageEmployees, IWork
     }
 
     //IWork methods
-    public void GetJobDescription(){}
-    public void GetTaskList(){}
+    public void GetJobDescription()
+    {
+        Console.WriteLine(JobDescription);
+    }
+
+    public void GetTaskList()
+    {
+        Console.WriteLine(TaskList);
+    }
     
     //IManageEmployees methods
     public void HireEmployee(Employee employee)
