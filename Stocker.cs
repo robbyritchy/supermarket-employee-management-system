@@ -4,8 +4,8 @@ public class Stocker : Employee
 {
     public decimal HourlyPay { get; set; }
 
-    public Stocker(string name, int id, decimal hourlyPay, IHourLogger logger)
-        : base(name, id, logger)
+    public Stocker(string name, int id, decimal hourlyPay, IHourLogger logger, PayMethod payMethod)
+        : base(name, id, logger, payMethod)
     {
         HourlyPay = hourlyPay;
         JobDescription = "Restocks shelves and manages inventory.";

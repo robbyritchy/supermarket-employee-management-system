@@ -4,8 +4,8 @@ public class Cashier : Employee
 {
     public decimal HourlyPay { get; set; }
 
-    public Cashier(string name, int id, decimal hourlyPay, IHourLogger logger)
-        : base(name, id, logger)
+    public Cashier(string name, int id, decimal hourlyPay, IHourLogger logger, PayMethod payMethod)
+        : base(name, id, logger, payMethod)
     {
         HourlyPay = hourlyPay;
         JobDescription = "Handles checkout and assists customers.";
