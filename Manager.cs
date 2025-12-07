@@ -134,12 +134,12 @@ public class Manager : Employee, IManageEmployees, IWork
     
 
     //*** Placeholder value for now, make sure to fix later ***
-    public void PayEmployee(int employeeId, IPaycheck method)
+    public void PayEmployee(int employeeId, Paycheck method)
     {
         throw new NotImplementedException();
     }
 
-    public decimal GetEmployeePay(int employeeId, IPaycheck method)
+    public decimal GetEmployeePay(int employeeId, Paycheck method)
     {
         throw new NotImplementedException();
     }

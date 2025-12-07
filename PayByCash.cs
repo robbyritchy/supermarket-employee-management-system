@@ -1,15 +1,15 @@
 namespace Final_Project;
 
-public class PayByCash : IPaycheck
+public class PayByCash : Paycheck
 {
-    public decimal CalculatePay(Employee employee)
+    public override decimal CalculatePay(Employee employee)
     {
         return employee.CalculatePay();
     }
 
-    public void Pay(Employee employee)
+    public override void ProcessPayment(Employee employee, decimal amount)
     {
-        var amount = CalculatePay(employee);
+        
         Console.WriteLine($"Paying cash to {employee.Name}: {amount:C}");
     }
 }

@@ -1,15 +1,14 @@
 namespace Final_Project;
 
-public class PayByDirectDeposit : IPaycheck
+public class PayByDirectDeposit : Paycheck
 {
-    public decimal CalculatePay(Employee employee)
+    public override decimal CalculatePay(Employee employee)
     {
         return employee.CalculatePay();
     }
 
-    public void Pay(Employee employee)
+    public override void ProcessPayment(Employee employee, decimal amount)
     {
-        var amt = CalculatePay(employee);
-        Console.WriteLine($"Depositing {amt:C} into account for {employee.Name}");
+        Console.WriteLine($"Depositing {amount:C} into account for {employee.Name}");
     }
 }

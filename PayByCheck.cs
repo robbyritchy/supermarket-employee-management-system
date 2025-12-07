@@ -1,16 +1,15 @@
 namespace Final_Project;
 using System;
 
-public class PayByCheck : IPaycheck
+public class PayByCheck : Paycheck
 {
-    public decimal CalculatePay(Employee employee)
+    public override decimal CalculatePay(Employee employee)
     {
         return employee.CalculatePay();
     }
 
-    public void Pay(Employee employee)
+    public override void ProcessPayment(Employee employee, decimal amount)
     {
-        var amt = CalculatePay(employee);
-        Console.WriteLine($"Issuing check to {employee.Name}: {amt:C}");
+        Console.WriteLine($"Issuing check to {employee.Name}: {amount:C}");
     }
 }
