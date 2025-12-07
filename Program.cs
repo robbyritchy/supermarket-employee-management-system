@@ -92,8 +92,9 @@ class Program
                 Console.WriteLine("4. Fire Employee");
                 Console.WriteLine("5. Log Hours");
                 Console.WriteLine("6. View Hours for employee");
-                Console.WriteLine("7. View Job Description");
-                Console.WriteLine("8. View Task List");
+                Console.WriteLine("7. Pay Employee");
+                Console.WriteLine("8. View Job Description");
+                Console.WriteLine("9. View Task List");
                 Console.WriteLine("0. Log Out");
 
                 switch (Console.ReadLine())
@@ -121,12 +122,14 @@ class Program
                     case "6":
                         ViewEmployeeHours();
                         break;
-
                     case "7":
+                        PayEmployeeMenu(owner);
+                        break;
+                    case "8":
                         manager.GetJobDescription();
                         break;
 
-                    case "8":
+                    case "9":
                         manager.GetTaskList();
                         break;
 
@@ -277,5 +280,46 @@ class Program
         }
         logger.DisplayHours(id);
     }
+
+    static void PayEmployeeMenu(Manager manager)
+    {
+        Console.WriteLine("Enter employee ID to pay: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID.");
+            return;
+        }
+
+        Console.WriteLine("Choose payment method:");
+        Console.WriteLine("1. Use Employee Preferred Method");
+        Console.WriteLine("2. Cash");
+        Console.WriteLine("3. Check");
+        Console.WriteLine("4. Direct Deposit");
+
+        Paycheck method = null; // --default- (employee's preference)
+
+        switch (Console.ReadLine())
+        {
+            case "1":
+                method = null; // -- use preferred
+                break;
+            case "2":
+                method = new PayByCash();
+                break;
+            case "3":
+                method = new PayByCheck();
+                break;
+            case "4":
+                method = new PayByDirectDeposit();
+                break;
+            default:
+                Console.WriteLine("Invalid choice. Using employee's preferred method.");
+                break;
+        }
+
+        manager.PayEmployee(id, method);
+    }
+
 }
 
