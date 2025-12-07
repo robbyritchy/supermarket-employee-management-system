@@ -5,6 +5,7 @@ public abstract class Employee
     public string Name { get; set; }
     public int Id { get; private set; }
     public string JobDescription { get; set; }
+    public string TaskList { get; set; }
     
     public IHourLogger HourLogger { get; }
 

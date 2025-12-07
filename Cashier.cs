@@ -9,6 +9,7 @@ public class Cashier : Employee
     {
         HourlyPay = hourlyPay;
         JobDescription = "Handles checkout and assists customers.";
+        TaskList = "Refill cash in register.";
     }
     public void GetJobDescription(){}
     public void GetTaskList(){}

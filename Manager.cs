@@ -11,6 +11,7 @@ public class Manager : Employee, IManageEmployees, IWork
         Salary = salary;
         _employees = employees;
         JobDescription = "Oversees employees, manages payment for employees, and controls employee statuses.";
+        TaskList = "Pay Employees on Friday at 12 PM. Fire any employees clocking in less than 2 hours weekly.";
     }
     
     //Employee Superclass method
