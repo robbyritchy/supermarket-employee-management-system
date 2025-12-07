@@ -7,65 +7,170 @@ class Program
     private static Supermarket supermarket = new Supermarket();
     private static HourLogger logger = HourLogger.GetInstance();
     private static Manager owner;
+    
     static void Main(string[] args)
     {
         owner = new Manager("Owner", supermarket.GenerateId(), 5000, supermarket.Employees, logger, PayMethod.Cash);
+        //Test employees
+        supermarket.Employees[owner.Id] = owner;
+        var cashier = EmployeeFactory.CreateEmployee(
+            JobType.Cashier,
+            "Robby",
+            supermarket.GenerateId(),
+            15
+        );
+        supermarket.Employees[cashier.Id] = cashier;
+
+        var stocker = EmployeeFactory.CreateEmployee(
+            JobType.Stocker,
+            "Angel",
+            supermarket.GenerateId(),
+            15
+        );
+        supermarket.Employees[stocker.Id] = stocker;
+        
+
+        
 
         bool running = true;
         
         Console.WriteLine("\n---------- Supermarket Management ----------");
-
-        while (running)
+        Console.WriteLine($"For demonstration purposes:");
+        Console.WriteLine($"Manager-Test ID: {owner.Id}");
+        Console.WriteLine($"Cashier-Test ID: {cashier.Id}");
+        Console.WriteLine($"Stocker-Test ID: {stocker.Id}");
+        while (true)
         {
-            Console.WriteLine("\nMenu");
-            Console.WriteLine("1. Show Employees");
-            Console.WriteLine("2. Hire Employee");
-            Console.WriteLine("3. Edit Employee");
-            Console.WriteLine("4. Fire Employee");
-            Console.WriteLine("5. Log Hours");
-            Console.WriteLine("6. View Hours for employee");
-            Console.WriteLine("7. View Job Description");
-            Console.WriteLine("8. View Task List");
-            Console.WriteLine("0. Exit");
-            Console.Write("\nChoose an option: ");
-            
-            string input = Console.ReadLine();
+            Employee user = Login();
+            if (user == null) return;
 
-            switch (input)
+            if (user is Manager managerUser)
+                ManagerMenu(managerUser);
+            else
+                EmployeeMenu(user);
+        }
+        
+    }
+
+    static Employee Login()
+        {
+            while (true)
             {
-                case "1":
-                    supermarket.ShowEmployeeList();
-                    break;
-                case "2":
-                    HireEmployee(supermarket);
-                    break;
-                case "3":
-                    EditEmployee(supermarket);
-                    break;
-                case "4":
-                    FireEmployee();
-                    break;
-                case "5":
-                    LogEmployeeHours();
-                    break;
-                case "6":
-                    ViewEmployeeHours();
-                    break;
-                case "7":
-                    owner.GetJobDescription();
-                    break;
-                case "8":
-                    owner.GetTaskList();
-                    break;
-                case "0":
-                    return;
-                default:
-                    Console.WriteLine("Invalid option");
-                    break;
+                Console.WriteLine("\nEnter Employee ID (or type 'exit'): ");
+                string input = Console.ReadLine();
+
+                if (input?.ToLower() == "exit")
+                    return null;
+
+                if (!int.TryParse(input, out int id))
+                {
+                    Console.WriteLine("Not a valid number.");
+                    continue;
+                }
+
+                if (supermarket.Employees.TryGetValue(id, out Employee emp))
+                {
+                    Console.WriteLine($"\nWelcome {emp.Name} ({emp.GetType().Name})");
+                    return emp;
+                }
+
+                Console.WriteLine("Employee not found.");
             }
         }
-    }
-    
+
+        //  MANAGER MENU 
+        static void ManagerMenu(Manager manager)
+        {
+            bool loggedIn = true;
+
+            while (loggedIn)
+            {
+                Console.WriteLine("\nManager Menu");
+                Console.WriteLine("1. Show Employees");
+                Console.WriteLine("2. Hire Employee");
+                Console.WriteLine("3. Edit Employee");
+                Console.WriteLine("4. Fire Employee");
+                Console.WriteLine("5. Log Hours");
+                Console.WriteLine("6. View Hours for employee");
+                Console.WriteLine("7. View Job Description");
+                Console.WriteLine("8. View Task List");
+                Console.WriteLine("0. Log Out");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        supermarket.ShowEmployeeList();
+                        break;
+
+                    case "2":
+                        HireEmployee(supermarket);
+                        break;
+
+                    case "3":
+                        EditEmployee(supermarket);
+                        break;
+
+                    case "4":
+                        FireEmployee();
+                        break;
+
+                    case "5":
+                        LogEmployeeHours();
+                        break;
+
+                    case "6":
+                        ViewEmployeeHours();
+                        break;
+
+                    case "7":
+                        manager.GetJobDescription();
+                        break;
+
+                    case "8":
+                        manager.GetTaskList();
+                        break;
+
+                    case "0":
+                        loggedIn = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+            }
+        }
+
+        // EMPLOYEE MENU 
+        static void EmployeeMenu(Employee employee)
+        {
+            bool loggedIn = true;
+
+            while (loggedIn)
+            {
+                Console.WriteLine("\nEmployee Menu");
+                Console.WriteLine("1. View Job Description");
+                Console.WriteLine("2. View Task List");
+                Console.WriteLine("0. Log Out");
+
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        Console.WriteLine(employee.JobDescription);
+                        break;
+                    case "2":
+                        Console.WriteLine(employee.TaskList);
+                        break;
+                    case "0":
+                        loggedIn = false;
+                        break;
+                    default:
+                        Console.WriteLine("Invalid option.");
+                        break;
+                }
+            }
+        }
+        
     //Methods for employee control
     
     //Hire Employee method
