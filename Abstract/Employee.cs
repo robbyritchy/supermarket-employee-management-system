@@ -7,15 +7,24 @@ public abstract class Employee
     public string JobDescription { get; set; }
     public string TaskList { get; set; }
     public Paycheck PaymentMethod {get; set;}
+    public PayMethod PreferredPayMethod {get; set;}
     
     public IHourLogger HourLogger { get; }
 
-    protected Employee(string name, int id, IHourLogger logger, Paycheck payMethod)
+    protected Employee(string name, int id, IHourLogger logger, PayMethod payMethod)
     {
         Name = name;
         Id = id;
-        HourLogger = logger;
-        PaymentMethod = payMethod;
+        HourLogger = logger; 
+        PreferredPayMethod = payMethod;
+
+        PaymentMethod = payMethod switch
+        {
+            PayMethod.Cash => new PayByCash(),
+            PayMethod.Check => new PayByCheck(),
+            PayMethod.DirectDeposit => new PayByDirectDeposit(),
+            _ => new PayByCash()
+        };
     }
     
     //Method for setting payment method

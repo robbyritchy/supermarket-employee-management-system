@@ -5,7 +5,7 @@ public class Manager : Employee, IManageEmployees, IWork
     private readonly Dictionary<int, Employee> _employees;
     public decimal Salary { get; set; }
 
-    public Manager(string name, int id, decimal salary, Dictionary<int, Employee> employees, IHourLogger logger, Paycheck payMethod)
+    public Manager(string name, int id, decimal salary, Dictionary<int, Employee> employees, IHourLogger logger, PayMethod payMethod)
         : base(name, id, logger, payMethod)
     {
         Salary = salary;
@@ -58,7 +58,7 @@ public class Manager : Employee, IManageEmployees, IWork
         }
     }
     //changes any aspect of an employee instance
-    public void EditEmployee(int employeeId, string? newName = null, decimal? newPay = null, JobType? newType = null)
+    public void EditEmployee(int employeeId, string? newName = null, decimal? newPay = null, JobType? newType = null, PayMethod? newPayMethod = null)
     {
         if (!_employees.TryGetValue(employeeId, out var employee))
         {
@@ -85,6 +85,18 @@ public class Manager : Employee, IManageEmployees, IWork
             {
                 stocker.HourlyPay = newPay.Value;
             }
+        }
+        //Updates payment method if provided
+        if (newPayMethod != null)
+        {
+            employee.PreferredPayMethod = newPayMethod.Value;
+            employee.PaymentMethod = newPayMethod.Value switch
+            {
+                PayMethod.Cash => new PayByCash(),
+                PayMethod.Check => new PayByCheck(),
+                PayMethod.DirectDeposit => new PayByDirectDeposit(),
+                _ => employee.PaymentMethod
+            };
         }
         //Use switch statement to set job type to associated class
         Type targetType = newType switch
@@ -122,13 +134,13 @@ public class Manager : Employee, IManageEmployees, IWork
                 }
                 
                 //Use factory method
-                Employee newEmployee = EmployeeFactory.CreateEmployee(newType.Value, employee.Name, employee.Id, startingPay);
+                Employee newEmployee = EmployeeFactory.CreateEmployee(newType.Value, employee.Name, employee.Id, startingPay, employee.PreferredPayMethod);
 
                 _employees[employeeId] = newEmployee;
                 Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) is now a {newType} with pay {startingPay:C}");
             }
         }
-        else if (newName != null | newPay != null)
+        else if (newName != null || newPay != null)
         {
             Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) has been updated");
             return;

@@ -24,7 +24,7 @@ public class EmployeeFactory
                 pay = 4000;
             }
 
-            return new Manager(name, id, pay, new Dictionary<int, Employee>(), logger, method);
+            return new Manager(name, id, pay, new Dictionary<int, Employee>(), logger, payMethod);
         }
         else if (type == JobType.Cashier)
         {
@@ -37,7 +37,7 @@ public class EmployeeFactory
             {
                 pay = 15;
             }
-            return new Cashier(name, id, pay, logger, method);
+            return new Cashier(name, id, pay, logger, payMethod);
         }
         else if (type == JobType.Stocker)
         {
@@ -50,7 +50,7 @@ public class EmployeeFactory
             {
                 pay = 15;
             }
-            return new Stocker(name, id, pay, logger, method);
+            return new Stocker(name, id, pay, logger, payMethod);
         }
         else
         {

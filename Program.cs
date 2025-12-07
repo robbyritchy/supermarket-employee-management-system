@@ -9,7 +9,7 @@ class Program
     private static Manager owner;
     static void Main(string[] args)
     {
-        owner = new Manager("Owner", supermarket.GenerateId(), 5000, supermarket.Employees, logger);
+        owner = new Manager("Owner", supermarket.GenerateId(), 5000, supermarket.Employees, logger, new PayByDirectDeposit());
 
         bool running = true;
         
