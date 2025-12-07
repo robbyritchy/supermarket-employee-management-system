@@ -131,6 +131,7 @@ public class Manager : Employee, IManageEmployees, IWork
         else if (newName != null | newPay != null)
         {
             Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) has been updated");
+            return;
         }
     }
     
@@ -138,7 +139,12 @@ public class Manager : Employee, IManageEmployees, IWork
     //*** Placeholder value for now, make sure to fix later ***
     public void PayEmployee(int employeeId, Paycheck method)
     {
-        throw new NotImplementedException();
+        if (!_employees.TryGetValue(employeeId, out var employee))
+        {
+            Console.WriteLine("Employee not found");
+            return;
+        }
+        method.Pay(employee);
     }
 
     public decimal GetEmployeePay(int employeeId, Paycheck method)
