@@ -6,11 +6,11 @@ public abstract class Employee
     public int Id { get; private set; }
     public string JobDescription { get; set; }
     public string TaskList { get; set; }
-    public PayMethod PaymentMethod {get; set;}
+    public Paycheck PaymentMethod {get; set;}
     
     public IHourLogger HourLogger { get; }
 
-    protected Employee(string name, int id, IHourLogger logger, PayMethod payMethod)
+    protected Employee(string name, int id, IHourLogger logger, Paycheck payMethod)
     {
         Name = name;
         Id = id;
@@ -19,7 +19,7 @@ public abstract class Employee
     }
     
     //Method for setting payment method
-    public void SetPayMethod(PayMethod payMethod)
+    public void SetPayMethod(Paycheck payMethod)
     {
         PaymentMethod = payMethod;
     }

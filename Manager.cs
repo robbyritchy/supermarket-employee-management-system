@@ -5,7 +5,7 @@ public class Manager : Employee, IManageEmployees, IWork
     private readonly Dictionary<int, Employee> _employees;
     public decimal Salary { get; set; }
 
-    public Manager(string name, int id, decimal salary, Dictionary<int, Employee> employees, IHourLogger logger, PayMethod payMethod)
+    public Manager(string name, int id, decimal salary, Dictionary<int, Employee> employees, IHourLogger logger, Paycheck payMethod)
         : base(name, id, logger, payMethod)
     {
         Salary = salary;
