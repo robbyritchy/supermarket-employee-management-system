@@ -91,10 +91,12 @@ class Program
                 Console.WriteLine("3. Edit Employee");
                 Console.WriteLine("4. Fire Employee");
                 Console.WriteLine("5. Log Hours");
-                Console.WriteLine("6. View Hours for employee");
-                Console.WriteLine("7. Pay Employee");
-                Console.WriteLine("8. View Job Description");
-                Console.WriteLine("9. View Task List");
+                Console.WriteLine("6. View Hours for Employee");
+                Console.WriteLine("7. View Job Description for Employee");
+                Console.WriteLine("8. View Task List for Employee");
+                Console.WriteLine("9. Pay Employee");
+                Console.WriteLine("10. View Job Description");
+                Console.WriteLine("11. View Task List");
                 Console.WriteLine("0. Log Out");
 
                 switch (Console.ReadLine())
@@ -123,13 +125,19 @@ class Program
                         ViewEmployeeHours();
                         break;
                     case "7":
-                        PayEmployeeMenu(owner);
+                        GetJobDescriptionMenu(owner);
                         break;
                     case "8":
+                        GetTaskListMenu(owner);
+                        break;
+                    case "9":
+                        PayEmployeeMenu(owner);
+                        break;
+                    case "10":
                         manager.GetJobDescription();
                         break;
 
-                    case "9":
+                    case "11":
                         manager.GetTaskList();
                         break;
 
@@ -319,6 +327,32 @@ class Program
         }
 
         manager.PayEmployee(id, method);
+    }
+
+    static void GetJobDescriptionMenu(Manager manager)
+    {
+        Console.WriteLine("Enter employee ID to get job description: ");
+
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID.");
+            return;
+        }
+
+        Console.WriteLine(manager.GetJobDescriptionFor(id));
+
+    }
+
+    static void GetTaskListMenu(Manager manager)
+    {
+        Console.WriteLine("Enter employee ID to get task list: ");
+        if (!int.TryParse(Console.ReadLine(), out int id))
+        {
+            Console.WriteLine("Invalid ID.");
+            return;
+        }
+        manager.GetTaskListFor(id);
+            
     }
 
 }
