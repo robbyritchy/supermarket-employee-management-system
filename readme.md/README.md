@@ -88,5 +88,49 @@
                 manager class can access employee information.
             </td>
         </tr>
+        <tr>
+            <td>Struct</td>
+            <td>WorkLogEntry.cs</td>
+            <td>All</td>
+            <td>Adds the date and number of entries when a work
+                log needs to be added to the hour logger.
+            </td>
+        </tr>
+        <tr>
+            <td>Enum 1</td>
+            <td>JobType.cs</td>
+            <td>All</td>
+            <td>Holds the different job types, used when manager
+                attempts to change an employees job.
+            </td>
+        </tr>
+        <tr>
+            <td>Enum 2</td>
+            <td>PayMethod.cs</td>
+            <td>All</td>
+            <td>Holds the different types of payment methods, also
+                used when manager attempts to change an employees
+                preferred payment type.
+            </td>
+        </tr>
+        <tr>
+            <td>Data Structure</td>
+            <td>Supermarket.cs</td>
+            <td>6</td>
+            <td>Defines a dictionary to hold a key value pair
+                of employee ids, and employee instances. Allows for 
+                quick look up and management of employees.
+            </td>
+        </tr>
+        <tr>
+            <td>I/O</td>
+            <td>Program.cs</td>
+            <td>All</td>
+            <td>Console UI that contains a login/logout function
+                for managers and regular employees (cashier/stocker),
+                From the UI, employees can be managed, and job 
+                descriptions and tasks can be viewed, along with hours.
+            </td>
+        </tr>
     </tbody>
 </table>
