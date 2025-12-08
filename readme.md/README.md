@@ -10,7 +10,7 @@
     design and fix these common issues.</p>
 <h1>Build and Run Instructions</h1>
 <p>The project runs on C#, Net 9.0 on Rider. Simply clone the 
-project from GitHub directly, and it will run.</p>
+project from GitHub directly, and it will run. Or open directly in rider.</p>
 <h1>Required OOP Features</h1>
 <table>
     <thead>
