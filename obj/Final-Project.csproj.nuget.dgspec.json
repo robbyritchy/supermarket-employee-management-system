@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/robbyritchy/3112/supermarket-employee-management-system/Final-Project.csproj": {}
+    "C:\\Users\\Angel\\RiderProjects\\ITSC_3112_Exercise_4\\Final-Project\\Final-Project.csproj": {}
   },
   "projects": {
-    "/Users/robbyritchy/3112/supermarket-employee-management-system/Final-Project.csproj": {
+    "C:\\Users\\Angel\\RiderProjects\\ITSC_3112_Exercise_4\\Final-Project\\Final-Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/robbyritchy/3112/supermarket-employee-management-system/Final-Project.csproj",
+        "projectUniqueName": "C:\\Users\\Angel\\RiderProjects\\ITSC_3112_Exercise_4\\Final-Project\\Final-Project.csproj",
         "projectName": "Final-Project",
-        "projectPath": "/Users/robbyritchy/3112/supermarket-employee-management-system/Final-Project.csproj",
-        "packagesPath": "/Users/robbyritchy/.nuget/packages/",
-        "outputPath": "/Users/robbyritchy/3112/supermarket-employee-management-system/obj/",
+        "projectPath": "C:\\Users\\Angel\\RiderProjects\\ITSC_3112_Exercise_4\\Final-Project\\Final-Project.csproj",
+        "packagesPath": "C:\\Users\\Angel\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Angel\\RiderProjects\\ITSC_3112_Exercise_4\\Final-Project\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/robbyritchy/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\Angel\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -59,7 +59,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Users\\Angel\\.dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

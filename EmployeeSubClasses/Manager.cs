@@ -123,7 +123,7 @@ public class Manager : Employee, IManageEmployees, IWork
             }
             else if ((employee is Cashier || employee is Stocker) && newType == JobType.Manager)
             {
-                startingPay = 4000;
+                startingPay = newPay ?? 4000;
             }
             else
             {
@@ -139,13 +139,12 @@ public class Manager : Employee, IManageEmployees, IWork
                 {
                     startingPay = ((Stocker)employee).HourlyPay;
                 }
-                
-                //Use factory method
-                Employee newEmployee = EmployeeFactory.CreateEmployee(newType.Value, employee.Name, employee.Id, startingPay, employee.PreferredPayMethod);
-
-                _employees[employeeId] = newEmployee;
-                Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) is now a {newType} with pay {startingPay:C}");
             }
+            //Use factory method
+            Employee newEmployee = EmployeeFactory.CreateEmployee(newType.Value, employee.Name, employee.Id, startingPay, employee.PreferredPayMethod);
+
+            _employees[employeeId] = newEmployee;
+            Console.WriteLine($"Employee {employee.Name} (ID: {employee.Id}) is now a {newType} with pay {startingPay:C}");
         }
         else if (newName != null || newPay != null)
         {
