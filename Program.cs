@@ -255,6 +255,12 @@ class Program
         {
             return;
         }
+        //Safety check to make sure manager can't fire themselves
+        if (id == owner.Id)
+        {
+            Console.WriteLine("Error: You, the owner cannot fire yourself!");
+            return;
+        }
         owner.FireEmployee(id);
     }
     
