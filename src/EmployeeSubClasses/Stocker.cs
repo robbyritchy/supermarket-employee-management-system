@@ -1,6 +1,6 @@
 namespace Final_Project;
 
-public class Stocker : Employee
+public class Stocker : Employee, IWork
 {
     public decimal HourlyPay { get; set; }
 

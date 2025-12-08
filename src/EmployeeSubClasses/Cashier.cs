@@ -1,6 +1,6 @@
 namespace Final_Project;
 
-public class Cashier : Employee
+public class Cashier : Employee, IWork
 {
     public decimal HourlyPay { get; set; }
 
