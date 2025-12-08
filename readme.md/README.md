@@ -150,5 +150,43 @@ project from GitHub directly, and it will run.</p>
         </tr>
     </thead>
     <tbody>
+        <tr>
+            <td>Factory Method</td>
+            <td>Creational</td>
+            <td>EmployeeFactory.cs</td>
+            <td>5-60</td>
+            <td>Encapsulates object creation for multiple employee
+                types and centralizes creation logic for new employees.
+            </td>
+        </tr>
+        <tr>
+            <td>Template Method</td>
+            <td>Behavioral</td>
+            <td>Paycheck.cs</td>
+            <td>5-7</td>
+            <td>Defines interchangeable payment algorithms for employee
+                preferences in payment. 
+            </td>
+        </tr>
+        <tr>
+            <td>Singleton</td>
+            <td>Creational</td>
+            <td>HourLogger.cs</td>
+            <td>8-17</td>
+            <td>Ensures that there is only one instance of HourLogger,
+                thereby ensuring that the hours of every employee are stored
+                in one centralized place that can be easily accessed.
+            </td>
+        </tr>
     </tbody>
 </table>
+
+<h1>Design Decisions</h1>
+<h3>Key Components</h3>
+<h5>Employee abstract class</h5>
+<p>The employee class is the base class for all employees, and
+    all of their shared properties.</p>
+<h5>Manager, Cashier, and Stocker</h5>
+<p>The employee subclasses each have specialized behavior based 
+    on their roles. Their pay structures are handles in separate
+    classes in order to adhere to the Open/Closed principle.</p>
