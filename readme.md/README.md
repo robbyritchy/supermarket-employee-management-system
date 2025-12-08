@@ -137,3 +137,18 @@ project from GitHub directly, and it will run.</p>
         </tr>
     </tbody>
 </table>
+
+<h1>Design Patterns</h1>
+<table>
+    <thead>
+        <tr>
+            <th>Pattern Name</th>
+            <th>Category</th>
+            <th>File Name</th>
+            <th>Line Numbers</th>
+            <th>Rationale</th>
+        </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
