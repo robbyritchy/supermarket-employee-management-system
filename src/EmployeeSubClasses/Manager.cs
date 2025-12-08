@@ -154,7 +154,7 @@ public class Manager : Employee, IManageEmployees, IWork
     }
     
 
-    public void PayEmployee(int employeeId, Paycheck method)
+    public void PayEmployee(int employeeId, Paycheck? method)
     {
         if (!_employees.TryGetValue(employeeId, out var employee))
         {

@@ -4,8 +4,8 @@ public abstract class Employee
 {
     public string Name { get; set; }
     public int Id { get; private set; }
-    public string JobDescription { get; set; }
-    public string TaskList { get; set; }
+    public string JobDescription { get; set; } = string.Empty;
+    public string TaskList { get; set; } = string.Empty;
     public Paycheck PaymentMethod {get; set;}
     public PayMethod PreferredPayMethod {get; set;}
     

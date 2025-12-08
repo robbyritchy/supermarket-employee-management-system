@@ -29,11 +29,6 @@ class Program
         );
         supermarket.Employees[stocker.Id] = stocker;
         
-
-        
-
-        bool running = true;
-        
         Console.WriteLine("\n---------- Supermarket Management ----------");
         Console.WriteLine($"For demonstration purposes:");
         Console.WriteLine($"Manager-Test ID: {owner.Id}");
@@ -41,7 +36,7 @@ class Program
         Console.WriteLine($"Stocker-Test ID: {stocker.Id}");
         while (true)
         {
-            Employee user = Login();
+            Employee? user = Login();
             if (user == null) return;
 
             if (user is Manager managerUser)
@@ -52,7 +47,7 @@ class Program
         
     }
 
-    static Employee Login()
+    static Employee? Login()
         {
             while (true)
             {
