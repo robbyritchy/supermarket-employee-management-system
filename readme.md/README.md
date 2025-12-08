@@ -8,7 +8,10 @@
     from old jobs where outdated methods were used to keep track of 
     employees, so we felt that we could take steps to create a modular
     design and fix these common issues.</p>
-
+<h1>Build and Run Instructions</h1>
+<p>The project runs on C#, Net 9.0 on Rider. Simply clone the 
+project from GitHub directly, and it will run.</p>
+<h1>Required OOP Features</h1>
 <table>
     <thead>
         <tr>
