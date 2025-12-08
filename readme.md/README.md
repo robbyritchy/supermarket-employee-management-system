@@ -38,11 +38,54 @@
             <td>Cashier inherits common behavior from Employee</td>
         </tr>
         <tr>
-            <td>Interface 1/td>
+            <td>Interface 1</td>
             <td>IHourLogger.cs</td>
             <td>All</td>
             <td>IHourLogger defines methods for HourLogger.cs to 
             follow, and allows for future expandability if needed.
+            </td>
+        </tr>
+        <tr>
+            <td>Interface 2</td>
+            <td>IManageEmployees.cs</td>
+            <td>All</td>
+            <td>Defines methods for manager class to control employees
+                such as hire,fire, and edit them.
+            </td>
+        </tr>
+        <tr>
+            <td>Interface 3</td>
+            <td>IWork.cs</td>
+            <td>All</td>
+            <td>Defines methods for employee subclasses to follow, 
+                including getting job descriptions and tasks. 
+            </td>
+        </tr>
+        <tr>
+            <td>Polymorphism 1</td>
+            <td>PayByCash.cs/PayByCheck.cs/PayByDirectDeposit.cs</td>
+            <td>5-14</td>
+            <td>The payment classes each override methods defined
+                by abstract class Paycheck to define their own way
+                to pay employees.
+            </td>
+        </tr>
+        <tr>
+            <td>Polymorphism 2</td>
+            <td>Employee.cs / Manager.cs</td>
+            <td>18-25</td>
+            <td>Manager overrides CalculatePay and GetPayInfo
+                methods from Employee to calculate and return 
+                payment information.
+            </td>
+        </tr>
+        <tr>
+            <td>Access Modifier</td>
+            <td>Manager.cs</td>
+            <td>5</td>
+            <td>The Employee dictionary is set to private
+                for security purposes, and to ensure only the 
+                manager class can access employee information.
             </td>
         </tr>
     </tbody>
