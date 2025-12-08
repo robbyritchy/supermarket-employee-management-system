@@ -220,3 +220,15 @@ project from GitHub directly, and it will run.</p>
     and leads to polymorphism.</p>
 
 <h2>Tradeoffs</h2>
+<h4>Flexibility and Complexity</h4>
+<p>The factory, template, and inheritence patterns add structure and 
+    future scalability but also increase complexity due to the 
+    number of classes.</p>
+<h4>Manager control</h4>
+<p>Manager holds most of the logic when it comes to controlling employees
+    so it may be difficult to manage if the system is expanded in the 
+    future. There will need to be refactoring, or a split of responsibilities
+    among new classes accordingly, in order to fit specific needs.</p>
+<h4>Console UI</h4>
+<p>The console UI limits the interactivity and scalability of the system,
+    but its simplicity is beneficial for testing and demonstrating purposes.</p>
