@@ -182,11 +182,41 @@ project from GitHub directly, and it will run.</p>
 </table>
 
 <h1>Design Decisions</h1>
-<h3>Key Components</h3>
-<h5>Employee abstract class</h5>
+<h2>Key Components</h2>
+<h4>Employee abstract class</h4>
 <p>The employee class is the base class for all employees, and
     all of their shared properties.</p>
-<h5>Manager, Cashier, and Stocker</h5>
+<h4>Manager, Cashier, and Stocker</h4>
 <p>The employee subclasses each have specialized behavior based 
     on their roles. Their pay structures are handles in separate
     classes in order to adhere to the Open/Closed principle.</p>
+<h4>Paycheck class</h4>
+<p>Implements template method pattern and centralizes payment workflow
+    while allowing its subclasses to define their algorithms.</p>
+<h4>Employee Factory</h4>
+<p>Implements factory method pattern, and creates employees dynamically
+    based on the JobType enum. Needs to be edited if new employees
+    classes are desired in the future</p>
+<h4>Manager</h4>
+<p>Manager acts as the central point for performing any employee 
+    related actions such as hiring, firing, editing, and paying.</p>
+<h4>Supermarket and HourLogger</h4>
+<p>Supermarket holds the employee registry, and HourLogger tracks
+    work hours through singleton pattern</p>
+<h4>Program.cs</h4>
+<p>The program file is the main point where the UI is handled,
+    along with handing responsibilities to classes rather than 
+    doing it in main.</p>
+
+<h2>Key Abstractions</h2>
+<h4>Employee Hierarchy</h4>
+<p>Separates roles and pay structures such as Managers having a
+    salary and Stockers/Cashiers having hourly rates.</p>
+<h4>Paycheck Hierarchy</h4>
+<p>Separates payment processes from payment types, and allows for
+    modularity within each specific class implementation.</p>
+<h4>Interfaces</h4>
+<p>Allow flexible contracts with their associated concrete classes, 
+    and leads to polymorphism.</p>
+
+<h2>Tradeoffs</h2>
